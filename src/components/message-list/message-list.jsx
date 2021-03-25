@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 import Message from '../message';
 
 class MessageList extends Component{

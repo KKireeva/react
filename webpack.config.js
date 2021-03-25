@@ -7,6 +7,7 @@ const isProd = process.env.NODE_ENV === 'production';
 const isDev = !isProd;
 
 module.exports = {
+    context: path.resolve(__dirname, 'src'),
     entry: path.join(__dirname, "src", "index.js"),
     output: {
       path: path.join(__dirname, "build"),
