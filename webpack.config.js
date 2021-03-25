@@ -1,4 +1,5 @@
 const path = require("path");
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ESLintPlugin = require('eslint-webpack-plugin');
@@ -10,8 +11,8 @@ module.exports = {
     context: path.resolve(__dirname, 'src'),
     entry: path.join(__dirname, "src", "index.js"),
     output: {
-      path: path.join(__dirname, "build"),
-      filename: "bundle.js",
+        path: path.join(__dirname, "build"),
+        filename: "bundle.js",
     },
     mode: process.env.NODE_ENV,
     target: 'browserslist',
@@ -41,6 +42,7 @@ module.exports = {
         },
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: path.resolve(__dirname, 'public', 'index.html'),
