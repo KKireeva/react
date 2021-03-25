@@ -17,26 +17,11 @@ module.exports = {
     mode: process.env.NODE_ENV,
     target: 'browserslist',
     devtool: 'source-map',
-    module: {
-        rules: [
-            {
-                test: /.(js|jsx)$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                },
-            },
-            {
-                test: /.(css|scss)$/,
-                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-            },
-        ],
-    },
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
             '@': path.resolve(__dirname, 'src'),
-            '@components': path.resolve(__dirname, 'src', 'сomponents'),
+            '@components': path.resolve(__dirname, 'src', 'components'),
             '@styles': path.resolve(__dirname, 'src', 'styles'),
             '@pages': path.resolve(__dirname, 'src', 'pages'),
         },
