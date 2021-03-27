@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import Message from '@components/message';
+import Message from '@components/Message';
 
 class MessageField extends Component{
     render() {
