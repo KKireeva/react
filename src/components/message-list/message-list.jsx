@@ -1,23 +1,32 @@
 import {Component} from 'react';
 import Message from '@components/message';
 
-class MessageList extends Component{
-    constructor(props) {
-        super(props);
+const messages = [
+    {
+        name: 'Ivan',
+        text: 'Hello everybody',
+        id: 'sdf'
+    },
+    {
+        name: 'Petr',
+        text: 'Second el',
+        id: 'dfgh'
+    }
+];
 
-        this.state = {
-            messages: this.props.messages
-        }
+class MessageList extends Component{
+    state = {
+        messages
     }
 
     addMessage = () => {
-        this.setState({
-            messages: [...this.state.messages, {
+        this.setState(prevState => ({
+            messages: [...prevState.messages, {
                 name: 'Kate',
                 text: "I'm fine",
                 id: 'lkjhkwh'
             }]
-        });
+        }));
     }
 
     render() {
