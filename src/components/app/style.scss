@@ -1,0 +1,10 @@
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+.app {
+    width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background: #eee;
+}
