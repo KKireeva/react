@@ -1,6 +1,7 @@
 import {Component} from 'react';
 import MessageField from '@components/MessageField';
 import AddMessage from '@components/AddMessage';
+import {AUTHORS} from '@utils/constants';
 
 import './style.scss';
 
@@ -8,14 +9,14 @@ export default class App extends Component {
     state = {
         messages: [
             {
-                author: 'Bot',
+                author: AUTHORS.BOT,
                 text: 'Hello everybody',
                 id: `id_1`
             }
         ]
     }
 
-    addMessage = (text, author = 'Kate') => {
+    addMessage = (text, author = AUTHORS.ME) => {
         if (text.length > 0) {
             this.setState(({messages}) => ({
                 messages: [...messages, {
@@ -31,8 +32,8 @@ export default class App extends Component {
         const {messages} = this.state;
         const lastMsg = messages[messages.length - 1];
 
-        if (lastMsg.author === 'Kate') {
-            this.addMessage(`Bot answered you on ${lastMsg.text}`, 'Bot')
+        if (lastMsg.author === AUTHORS.ME) {
+            this.addMessage(`Bot answered you on ${lastMsg.text}`, AUTHORS.BOT)
         }
     }
 

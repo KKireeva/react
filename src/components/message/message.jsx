@@ -1,8 +1,9 @@
 import './style.scss';
+import {AUTHORS} from '@utils/constants';
 
 const Message = (props) => {
     const {author, text} = props;
-    const me = author === 'Kate';
+    const me = author === AUTHORS.ME;
     const classNames = me ? 'message_right' : '';
 
     return (
