@@ -28,12 +28,15 @@ export default class App extends Component {
         }
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps, prevState) {
         const {messages} = this.state;
-        const lastMsg = messages[messages.length - 1];
 
-        if (lastMsg.author === AUTHORS.ME) {
-            this.addMessage(`Bot answered you on ${lastMsg.text}`, AUTHORS.BOT)
+        if (messages.length !== prevState.messages.length) {
+            const lastMsg = messages[messages.length - 1];
+
+            if (lastMsg.author === AUTHORS.ME) {
+                this.addMessage(`Bot answered you on ${lastMsg.text}`, AUTHORS.BOT)
+            }
         }
     }
 
