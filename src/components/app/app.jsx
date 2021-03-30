@@ -1,25 +1,53 @@
-import MessageList from '@components/message-list';
+import {Component} from 'react';
+import MessageField from '@components/MessageField';
+import AddMessage from '@components/AddMessage';
+import {AUTHORS} from '@utils/constants';
 
-const App = () => {
+import './style.scss';
 
-    const data = [
-        {
-            name: 'Ivan',
-            text: 'Hello everybody',
-            id: 'sdf'
-        },
-        {
-            name: 'Petr',
-            text: 'Second el',
-            id: 'dfgh'
+export default class App extends Component {
+    state = {
+        messages: [
+            {
+                author: AUTHORS.BOT,
+                text: 'Hello everybody',
+                id: `id_1`
+            }
+        ]
+    }
+
+    addMessage = (text, author = AUTHORS.ME) => {
+        if (text.length > 0) {
+            this.setState(({messages}) => ({
+                messages: [...messages, {
+                    author: author,
+                    text: text,
+                    id: `id_${messages.length + 1}`
+                }]
+            }));
         }
-    ];
+    }
 
-    return (
-        <div className='app'>
-            <MessageList messages = {data}/>
-        </div>
-    )
+    componentDidUpdate(prevProps, prevState) {
+        const {messages} = this.state;
+
+        if (messages.length !== prevState.messages.length) {
+            const lastMsg = messages[messages.length - 1];
+
+            if (lastMsg.author === AUTHORS.ME) {
+                this.addMessage(`Bot answered you on ${lastMsg.text}`, AUTHORS.BOT)
+            }
+        }
+    }
+
+    render() {
+        const {messages} = this.state;
+
+        return (
+            <div className='app'>
+                <MessageField messages={messages}/>
+                <AddMessage onAdd={this.addMessage} />
+            </div>
+        )
+    }
 }
-
-export default App;

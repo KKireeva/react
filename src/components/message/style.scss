@@ -1,0 +1,15 @@
+.message {
+    margin-bottom: 20px;
+    background: #add8e6;
+    padding: 20px;
+    border-radius: 10px;
+
+    &_right{
+        text-align: right;
+    }
+
+    &__author{
+        font-size: 14px;
+        font-weight: bold;
+    }
+}

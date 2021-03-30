@@ -1,3 +1,3 @@
-import Message from './message';
+import Message from './Message';
 
 export default Message;
