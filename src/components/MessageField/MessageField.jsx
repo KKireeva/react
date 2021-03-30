@@ -1,6 +1,8 @@
 import {Component} from 'react';
 import Message from '@components/Message';
 
+import './style.scss';
+
 class MessageField extends Component{
     render() {
         const {messages} = this.props;
