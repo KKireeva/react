@@ -1,6 +1,7 @@
 import {Component} from 'react';
 import {Switch, Route} from 'react-router-dom';
 import App from '@components/App';
+import Profile from '@components/Profile';
 
 class Router extends Component{
     render() {
@@ -8,6 +9,9 @@ class Router extends Component{
             <Switch>
                 <Route exact path='/'>
                     <App />
+                </Route>
+                <Route path='/profile'>
+                    <Profile />
                 </Route>
                 <Route exact path='/chat/1/' render={ () =>
                     <App chatId={ 1 } /> } />
