@@ -27,6 +27,12 @@ body {
         height: 80px;
         background: #333;
         color: #fff;
+
+        &__inner{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
     }
 
     &__content{

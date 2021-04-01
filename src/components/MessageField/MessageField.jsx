@@ -8,14 +8,14 @@ class MessageField extends Component{
         const {messages} = this.props;
         const Messages = messages.map((el) =>
             <Message
-                key={ el.id }
-                author={ el.author }
-                text={ el.text }
+                key={el.id}
+                author={el.author}
+                text={el.text}
             />);
 
         return (
             <div className='message__inner'>
-                { Messages }
+                {Messages }
             </div>
         );
     }

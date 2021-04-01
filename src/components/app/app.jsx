@@ -2,6 +2,8 @@ import {Component} from 'react';
 import Header from '@components/Header';
 import ChatList from '@components/ChatList';
 import MessageField from '@components/MessageField';
+import PropTypes from 'prop-types';
+
 import AddMessage from '@components/AddMessage';
 import {AUTHORS} from '@utils/constants';
 import {List} from '@material-ui/core';
@@ -18,16 +20,18 @@ export default class App extends Component {
             }
         ],
         chats: [
-            {
-                id: 1738192, name: 'Frontend'
-            },
-            {
-                id: 4564665, name: 'Друзья'
-            },
-            {
-                id: 4564564, name: 'Департамент производства'
-            }
+            {id: 1, name: 'Frontend'},
+            {id: 2, name: 'Друзья'},
+            {id: 3, name: 'Департамент производства'}
         ]
+    }
+
+    static propTypes = {
+        chatId: PropTypes.number,
+    }
+
+    static defaultProps = {
+        chatId: 1,
     }
 
     addMessage = (text, author = AUTHORS.ME) => {
@@ -59,10 +63,11 @@ export default class App extends Component {
 
     render() {
         const {messages, chats} = this.state;
+        const {chatId} = this.props;
 
         return (
             <div className='chat'>
-                <Header text='Telegram Header'/>
+                <Header chatId={ chatId } />
                 <div className='chat__inner'>
                     <div className='chat__content'>
                         <div className='chat__chats-list'>
