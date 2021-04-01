@@ -1,15 +1,19 @@
 .message {
     margin-bottom: 20px;
-    background: #add8e6;
-    padding: 20px;
-    border-radius: 10px;
+    background:lightblue;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 18px;
+    margin: 5px;
+    align-self: flex-start;
+    max-width: 70%;
 
     &_right{
-        text-align: right;
+        align-self: flex-end;
     }
 
     &__author{
         font-size: 14px;
-        font-weight: bold;
+        color: gray;
     }
 }

@@ -1,0 +1,9 @@
+.message__inner{
+    display: flex;
+    flex-direction: column;
+    background-color: #e2e2e2;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    overflow-y: scroll;
+}

@@ -8,8 +8,8 @@ const Message = (props) => {
 
     return (
         <div className={`message ${classNames}`}>
-            <div className='message__author'>{ author }</div>
             <div>{ text }</div>
+            <div className='message__author'>{ author }</div>
         </div>
     )
 }
