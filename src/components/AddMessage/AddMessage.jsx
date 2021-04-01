@@ -33,7 +33,7 @@ export default class AddMessage extends Component {
                     label='Write a message...'
                     onChange={this.onValueChange}
                     value={this.state.text}
-                    ref={ this.textInput }
+                    inputRef={ this.textInput }
                     variant='outlined'
                     style={{width: '100%'}}
                 />
