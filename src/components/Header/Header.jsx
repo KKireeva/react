@@ -8,7 +8,7 @@ const Header = ({chatId}) => {
             <div className='chat__inner chat__header__inner'>
                 Чат {chatId}
                 <Link to='/profile/'>
-                    <Avatar style={{marginRight: '10px', backgroundColor: 'black'}}>
+                    <Avatar style={{marginRight: '10px', backgroundColor: '#333'}}>
                         <PersonIcon />
                     </Avatar>
                 </Link>
