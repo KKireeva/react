@@ -43,8 +43,9 @@ body {
     }
 
     &__chats-list{
-        width: 300px;
+        width: 240px;
         margin-right: 20px;
+        flex-shrink: 0;
     }
 
     &__box{
