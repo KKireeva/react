@@ -13,10 +13,15 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'build'),
         filename: 'bundle.js',
+        publicPath: '/',
     },
     mode: process.env.NODE_ENV,
     target: 'browserslist',
     devtool: 'source-map',
+    devServer: {
+        port: 8080,
+        historyApiFallback: true
+    },
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {

@@ -12,18 +12,17 @@ import './style.scss';
 
 export default class App extends Component {
     state = {
-        messages: [
-            {
-                author: AUTHORS.BOT,
-                text: 'Hello everybody',
-                id: `id_1`
-            }
-        ],
-        chats: [
-            {id: 1, name: 'Frontend'},
-            {id: 2, name: 'Друзья'},
-            {id: 3, name: 'Департамент производства'}
-        ]
+        messages: {
+            1: {author: AUTHORS.BOT, text: 'Hello everybody'},
+            2: {author: AUTHORS.ME, text: 'Hello slfdjklj'},
+            3: {author: AUTHORS.BOT, text: 'Hello'},
+            4: {author: AUTHORS.ME, text: 'Hi!'}
+        },
+        chats: {
+            1: {name: 'Frontend', messageList: [1, 4]},
+            2: {name: 'Друзья', messageList: [2]},
+            3: {name: 'Департамент производства', messageList: [3, 6]}
+        }
     }
 
     static propTypes = {
@@ -35,22 +34,28 @@ export default class App extends Component {
     }
 
     addMessage = (text, author = AUTHORS.ME) => {
+        const {messages, chats} = this.state;
+        const {chatId} = this.props;
+
         if (text.length > 0) {
-            this.setState(({messages}) => ({
-                messages: [...messages, {
-                    author: author,
-                    text: text,
-                    id: `id_${messages.length + 1}`
-                }]
-            }));
+            const messageId = Object.keys(messages).length + 1;
+            this.setState({
+                messages: {...messages,
+                    [messageId]: {text: text, author: author}},
+                chats: {...chats,
+                    [chatId]: {...chats[chatId],
+                        messageList: [...chats[chatId].messageList, messageId]
+                    }
+                }
+            })
         }
     }
 
     componentDidUpdate(prevProps, prevState) {
         const {messages} = this.state;
 
-        if (messages.length !== prevState.messages.length) {
-            const lastMsg = messages[messages.length - 1];
+        if (Object.keys(messages).length !== Object.keys(prevState.messages).length) {
+            const lastMsg = Object.values(messages)[Object.values(messages).length - 1];
 
             if (lastMsg.author === AUTHORS.ME) {
                 if (this.timeout) clearTimeout(this.timeout);
@@ -76,7 +81,7 @@ export default class App extends Component {
                             </List>
                         </div>
                         <div className='chat__box'>
-                            <MessageField messages={messages}/>
+                            <MessageField messages={messages} chats={chats} chatId={chatId} />
                             <AddMessage onAdd={this.addMessage} />
                         </div>
                     </div>

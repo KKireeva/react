@@ -5,17 +5,19 @@ import './style.scss';
 
 class MessageField extends Component{
     render() {
-        const {messages} = this.props;
-        const Messages = messages.map((el) =>
+        const {messages, chats, chatId} = this.props;
+
+        const Messages = chats[chatId].messageList.map((messageId, index) => (
             <Message
-                key={el.id}
-                author={el.author}
-                text={el.text}
-            />);
+                key={ index }
+                text={ messages[messageId]?.text }
+                author={ messages[messageId]?.author }
+            />
+        ));
 
         return (
             <div className='message__inner'>
-                {Messages }
+                {Messages}
             </div>
         );
     }
