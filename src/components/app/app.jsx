@@ -21,7 +21,7 @@ export default class App extends Component {
         chats: {
             1: {name: 'Frontend', messageList: [1, 4]},
             2: {name: 'Друзья', messageList: [2]},
-            3: {name: 'Департамент производства', messageList: [3, 6]}
+            3: {name: 'Департамент производства', messageList: [3]}
         }
     }
 
