@@ -10,8 +10,8 @@ const MessageField = ({messages, chats, chatId, addMessage}) => {
             Messages.push(
                 <Message
                     key={messageId}
-                    text={messages[messageId]?.text}
-                    author={messages[messageId]?.author}
+                    text={messages[messageId].text}
+                    author={messages[messageId].author}
                 />
             )
         }
