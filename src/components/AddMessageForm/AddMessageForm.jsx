@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {TextField, Button} from '@material-ui/core';
 
-export default class AddMessage extends Component {
+export default class AddMessageForm extends Component {
     state = {
         text: ''
     }
@@ -16,7 +16,7 @@ export default class AddMessage extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.addMessage(this.state.text);
+        this.props.handlerMessage(this.state.text);
         this.setState({
             text: ''
         });
