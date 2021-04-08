@@ -16,7 +16,7 @@ export default class AddMessage extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.onAdd(this.state.text);
+        this.props.addMessage(this.state.text);
         this.setState({
             text: ''
         });
@@ -25,6 +25,12 @@ export default class AddMessage extends Component {
     componentDidMount() {
         this.textInput.current.focus();
     }
+
+    /*componentDidUpdate(prevProps) {
+        if (this.props.chatId !== prevProps.chatId) {
+            this.textInput.current.focus();
+        }
+    }*/
 
     render() {
         return (

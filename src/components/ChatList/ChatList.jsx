@@ -1,21 +1,54 @@
 import {Component} from 'react';
-import {ListItem, ListItemText} from '@material-ui/core';
+import {List, ListItem, ListItemText, Avatar, Typography, TextField} from '@material-ui/core';
+import {Link} from 'react-router-dom';
 
-class ChatList extends Component{
+import './style.scss';
+
+export default class ChatList extends Component{
+    state = {
+        text: ''
+    }
+
+    onValueChange = (e) => {
+        this.setState({
+            text: e.target.value
+        });
+    }
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        this.props.addChat(this.state.text);
+        this.setState({
+            text: ''
+        });
+    }
+
     render() {
         const {chats} = this.props;
-        const ListItems = chats.map((el) =>
-            <ListItem button key={ el.id }>
-                <ListItemText primary={el.name} />
-            </ListItem>
-        );
+        const ListItems = Object.keys(chats).map(chatId => (
+            <Link to={`/chat/${chatId}`} key={chatId} className='chat-list__link'>
+                <ListItem button>
+                    <Avatar className='chat-list__avatar'>
+                        {chats[chatId].name[0]}
+                    </Avatar>
+                    <ListItemText primary={<Typography className='chat-list__text'>{chats[chatId].name}</Typography>}/>
+                </ListItem>
+            </Link>
+        ));
 
         return (
-            <div>
-                { ListItems }
-            </div>
+            <List>
+                <form onSubmit={this.onSubmit} className='chat-list__form'>
+                    <TextField
+                        className='chat-list__input'
+                        type='text'
+                        label='Add new chat...'
+                        onChange={this.onValueChange}
+                        value={this.state.text}
+                    />
+                </form>
+                {ListItems}
+            </List>
         );
     }
 }
-
-export default ChatList;

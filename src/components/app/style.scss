@@ -14,7 +14,7 @@ body {
 
 .chat {
     &__inner{
-        max-width: 80%;
+        max-width: 90%;
         margin: 0 auto;
         padding: 0px 20px;
     }
@@ -25,8 +25,14 @@ body {
         line-height: 80px;
         font-weight: bold;
         height: 80px;
-        background: #333;
+        background: #000;
         color: #fff;
+
+        &__inner{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
     }
 
     &__content{
@@ -34,11 +40,12 @@ body {
         justify-content: space-between;
         height: calc(100vh - 80px);
         padding-top: 20px;
+        background: #fff;
     }
 
     &__chats-list{
-        width: 300px;
-        margin-right: 20px;
+        width: 240px;
+        flex-shrink: 0;
     }
 
     &__box{
@@ -46,6 +53,6 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding-bottom: 20px;
+        padding: 0 16px 20px 0;
     }
 }

@@ -1,25 +1,30 @@
-import {Component} from 'react';
 import Message from '@components/Message';
+import AddMessage from '@components/AddMessage';
 
 import './style.scss';
 
-class MessageField extends Component{
-    render() {
-        const {messages} = this.props;
-        const Messages = messages.map((el) =>
-            <Message
-                key={ el.id }
-                author={ el.author }
-                text={ el.text }
-            />);
-
-        return (
-            <div className='message__inner'>
-                { Messages }
-            </div>
-        );
+const MessageField = ({messages, chats, chatId, addMessage}) => {
+    const Messages = [];
+    for (let messageId of chats[chatId].messageList) {
+        if (messages[messageId]) {
+            Messages.push(
+                <Message
+                    key={messageId}
+                    text={messages[messageId].text}
+                    author={messages[messageId].author}
+                />
+            )
+        }
     }
-}
 
+    return (
+        <div className='chat__box'>
+            <div className='message__inner'>
+                {Messages}
+            </div>
+            <AddMessage addMessage={addMessage} chatId={chatId} />
+        </div>
+    );
+}
 
 export default MessageField;
