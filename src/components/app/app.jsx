@@ -8,7 +8,7 @@ import './style.scss';
 
 export default class App extends Component {
     static defaultProps = {
-        chatId: 1
+        chatId: '1'
     }
 
     render() {
@@ -20,7 +20,7 @@ export default class App extends Component {
                     <div className='chat__content'>
                         <div className='chat__chats-list'>
                             <List component='nav' aria-label='main mailbox folders'>
-                                <ChatList/>
+                                <ChatList activeId={chatId}/>
                             </List>
                         </div>
                         <MessageField chatId={chatId} />

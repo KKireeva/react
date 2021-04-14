@@ -1,7 +1,13 @@
 import {ADD_CHAT} from "./types";
+import {ADD_BLINK} from './types';
 //import {ADD_MSG_TO_CHAT} from "./types";
 
-const initialState = {};
+const initialState = {
+    1: {
+        name: 'Default chat',
+        id: 1
+    }
+};
 
 export const chatListReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -9,8 +15,23 @@ export const chatListReducer = (state = initialState, action) => {
                 const chatId = Object.keys(state).length + 1;
                 return {
                     ...state,
-                    [chatId]: {name: action.name, messageList: []}
+                    [chatId]: {name: action.name, id: chatId, isBlink: false}
                 };
+            }
+
+            case ADD_BLINK: {
+                const chat = state[action.id];
+                if (!chat) return;
+
+                const obj = {
+                    ...state,
+                    [action.id]: {
+                        ...chat,
+                        isBlink: !!action.blink
+                    }
+                }
+
+                return obj;
             }
 
             /*case ADD_MSG_TO_CHAT: {
