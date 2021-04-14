@@ -19,7 +19,7 @@ class Router extends Component{
                     <Route
                         exact
                         path='/chat/:chatId/'
-                        render={obj => <App chatId={Number(obj.match.params.chatId)} />
+                        render={obj => <App chatId={obj.match.params.chatId} />
                         }
                     />
                     <Redirect to='/' />

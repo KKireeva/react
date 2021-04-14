@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 
 import './style.scss';
 
-const ChatList = () => {
+const ChatList = ({activeId}) => {
     const [inputValue, setInputValue] = useState('');
     const chats = useSelector((state) => state.chats);
     const dispatch = useDispatch();
@@ -28,7 +28,9 @@ const ChatList = () => {
     }, [inputValue, dispatch]);
 
     const ListItems = Object.keys(chats).map(chatId => (
-        <Link to={`/chat/${chatId}`} key={chatId} className='chat-list__link'>
+        <Link to={`/chat/${chatId}`} key={chatId} className={
+            `chat-list__link ${chats[chatId].isBlink ? 'blink' : ''} ${activeId === chatId ? 'active' : ''}`
+        }>
             <ListItem button>
                 <Avatar className='chat-list__avatar'>
                     {chats[chatId].name[0]}

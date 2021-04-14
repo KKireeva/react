@@ -3,6 +3,14 @@
         color: #000;
         text-decoration: none;
         display: flex;
+
+        &.active{
+            background: #d5f4ff;
+        }
+
+        &.blink{
+            background: lightblue;
+        }
     }
 
     &__avatar{
